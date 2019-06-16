@@ -21,12 +21,14 @@ router.get('/:id', (req, res) => {
 
 router.get('/featured', (req, res) => {
   Blog
-    .where("featured", true)
+    .find({'featured': true})
     .then(blogs => {
-      if(!blogs) return res.status(404).send();
-      else return res.status(200).json(blogs);
+      if(blogs){
+        res.status(200).json(blogs)
+      }
+      else console.log('blogs not found');
     })
-    .catch(err => res.status(500).send('bad request'));
+    .catch(err => console.log(err));
 });
 
 module.exports = router;

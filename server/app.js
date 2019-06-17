@@ -2,7 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 
-mongoose.connect('mongodb://localhost/my-blog', { useNewUrlParser: true });
+mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true });
 
 
 mongoose.Promise = Promise;

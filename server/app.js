@@ -2,11 +2,8 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 
-if(process.env.ENV === 'production'){
-    mongoose.connect(process.env.MONGODB_URI);
-}else{
-mongoose.connect('mongodb://localhost/my-blog');
-}
+mongoose.connect('mongodb://localhost/my-blog', { useNewUrlParser: true });
+
 
 mongoose.Promise = Promise;
 
